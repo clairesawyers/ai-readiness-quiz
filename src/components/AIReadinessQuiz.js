@@ -709,4 +709,52 @@ const AIReadinessQuiz = () => {
                     <div className="w-full bg-gray-200 rounded-full h-2">
                       <div 
                         className={`h-2 rounded-full ${
-                          score < 40 ? "bg-red-500
+                          score < 40 ? "bg-red-500" : 
+                          score < 75 ? "bg-yellow-500" : 
+                          "bg-green-500"
+                        }`}
+                        style={{ width: `${score}%` }}
+                      ></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          
+          {/* Recommendations */}
+          {recommendation && (
+            <div className="mb-8">
+              <h2 className="text-xl font-semibold mb-4">Recommended Next Steps</h2>
+              <div className="bg-blue-50 border border-blue-200 rounded-md p-4">
+                <h3 className="font-medium text-blue-800 mb-3">{recommendation.title}</h3>
+                <ul className="space-y-2">
+                  {recommendation.points.map((point, index) => (
+                    <li key={index} className="flex items-start">
+                      <ArrowRight size={18} className="text-blue-600 mr-2 mt-1 flex-shrink-0" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )}
+          
+          {/* CTA */}
+          <div className="text-center">
+            <h2 className="text-xl font-semibold mb-4">Want a Deeper Analysis?</h2>
+            <p className="mb-6">Our AI consultants can provide a more detailed assessment and personalized roadmap for your business.</p>
+            <button 
+              className="bg-blue-600 text-white px-6 py-3 rounded-md hover:bg-blue-700"
+              onClick={() => window.open('https://example.com/consultation', '_blank')}
+            >
+              Book a Free Consultation
+            </button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default AIReadinessQuiz;
